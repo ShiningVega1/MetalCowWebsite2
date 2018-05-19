@@ -1,0 +1,20 @@
+.darkBg-link:hover{
+  color: #a9cd2e;
+}
+
+h2.mcr_title {
+  font-size:7vw;
+  font-weight: bold;
+  margin: 1em 0 .5em 0
+}
+
+
+
+.small_sponsors img{
+  margin: 0px 20px 10px 20px;
+  width:100px;
+}
+
+/*.btn.btn-darkBg:hover{
+  background-color: #727272;
+}*/
