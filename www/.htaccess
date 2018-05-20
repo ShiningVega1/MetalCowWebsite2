@@ -1,0 +1,21 @@
+#AddType application/json .json
+RewriteEngine On    # Turn on the rewriting engine
+
+#static redirects
+RedirectMatch 301 /video/chairmans2017(.*) https://youtu.be/28CTq6Mhg_Y/$1
+RedirectMatch 301 /summercamp2017 https://goo.gl/forms/PbkqjHWnyX2Rh2832
+RedirectMatch 301 /SummerCamp2017 https://goo.gl/forms/PbkqjHWnyX2Rh2832
+
+#page rewrites
+RewriteCond %{SCRIPT_FILENAME} !-d
+RewriteCond %{SCRIPT_FILENAME} !-f
+RewriteRule ^.*$ ./index.php
+
+
+
+ExpiresActive On
+ExpiresByType image/gif A2592000
+ExpiresByType image/png A2592000
+ExpiresByType image/jpeg A2592000
+
+ExpiresDefault M604800

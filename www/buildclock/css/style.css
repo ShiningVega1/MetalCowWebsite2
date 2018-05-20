@@ -1,0 +1,39 @@
+body {
+  font-size: 10vmin;
+  font-family: "Oswald";
+  font-weight: 300;
+  background-color: #0f0f0f; /*#123456; #000; navy;*/
+  /*background-color: #272727;*/
+  color:white;
+  line-height:90%;
+}
+
+.bold {
+  font-weight:normal;
+}
+
+.color {
+  /*color: #48b4b4;*/
+  color:GreenYellow;
+}
+
+#stopBuild{
+  text-align: center;
+  vertical-align: text-bottom;
+  display: none;
+  padding-top: 40vh;
+}
+
+#countDown{
+    padding-top: 30vh;
+}
+#countDown .row div{
+  padding:2px;
+}
+#countDown .row div:first-child{
+  text-align:right;
+  /*padding-right:px;*/
+}
+#countDown .row div:nth-child(2){
+  text-align:left;
+}
