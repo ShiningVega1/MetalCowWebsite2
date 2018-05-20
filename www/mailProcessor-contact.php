@@ -42,6 +42,6 @@ echo $message;
 //Need to look up how to write this professionally.  What did JawBone do with your ticket?
 
 //go back to the homepage
-header('Location: https://www.MetalCowRobotics,com/index.html');
+header('Location: https://www.metalcowrobotics.com/index.html');
 
 ?>
