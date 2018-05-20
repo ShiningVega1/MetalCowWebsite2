@@ -3,9 +3,7 @@ require '../vendor/autoload.php';
 
 //if required field is not present, prolly didn't use the HTML form.
 if( !isset($_POST['myname']) ) {
-  echo "We apologize, there was an technical error in processing your request please contact us using
-  the form at <a href='/#contact'>www.metalcowrobotics.com#contact</a>
-  or directly at teammetalcow@gmail.com";
+  echo "We apologize, there was an technical error in processing your request please contact us directly at teammetalcow@gmail.com";
   exit(0);
 }
 
@@ -17,9 +15,7 @@ $subject = filter_var($_POST["mysubject"], FILTER_SANITIZE_SPECIAL_CHARS);
 if(filter_var($_POST["myemail"], FILTER_VALIDATE_EMAIL) ){
   $email = $_POST["myemail"];
 }else{
-  echo "We appologize, there was an technical error in processing your request please contact us using
-  the form at <a href='www.metalcowrobotics.com#contact'>www.metalcowrobotics.com#contact</a>
-  or directly at teammetalcow@gmail.com";
+  echo "We appologize, there was a problem with your email address, please contact us directly at teammetalcow@gmail.com";
   exit(0);
 }
 
