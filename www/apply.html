@@ -138,7 +138,7 @@
 
       <section class="sec-padding">
       <div class="container">
-          <form class="form-horizontal" role="form" method="post" action="studentAppProcessor.php">
+          <form id="appForm" name="appForm" class="form-horizontal" role="form" method="post" action="studentAppProcessor.php">
               <div class="row">
 
                 <div class="col-md-6">
@@ -241,7 +241,10 @@
                   <textarea type="comment" class="form-control" id="studentInteresting" name="studentInteresting" rows="5" required></textarea>
                 </div>
                 <div class="col-md-12">
-                  <a class="btn btn-prim btn-darkBg btn-round btn-medium" type="submit"><i class="fa fa-play-circle" aria-hidden="true"></i> Submit Application</a> </div>
+                  <button class="btn btn-dark btn-medium uppercase" style="background-color: #a9cd2e;" type="submit">
+                  <i class="fa fa-paper-plane"></i>
+                   Submit Application
+                  </button>
                 </div>
 
               </form>
