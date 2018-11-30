@@ -11,6 +11,8 @@ RewriteRule ^(.*)$ %{REQUEST_FILENAME}.html
 RedirectMatch 301 /video/chairmans2017(.*) https://youtu.be/28CTq6Mhg_Y/$1
 RedirectMatch 301 /summercamp2017 https://goo.gl/forms/PbkqjHWnyX2Rh2832
 RedirectMatch 301 /SummerCamp2017 https://goo.gl/forms/PbkqjHWnyX2Rh2832
+RedirectMatch 301 /slack https://metalcowrobotics.slack.com
+
 Redirect 301 /signup.html /emailform
 
 # Handle Errors
