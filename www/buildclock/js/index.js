@@ -9,11 +9,11 @@
 
 //KICKOFF: Saturday, January 6, 2018 | 10:00 am - 12:00 pm ET
 //This means Jan 5, 2018 @ 9am CST
-startBuild = new Date(2019,0,4,9,30,0);
+startBuild = new Date(2019,0,4,8,30,0);
 
 //STOP BUILD: Tuesday, February 20, 2018 - 11:59pm ET
 //This means Feb 19, 2018 @ 10:59 CST
-stopBuild = new Date(2019,1,18,22,59,0); //Stop Build 2018
+stopBuild = new Date(2019,1,18,21,59,0); //Stop Build 2018
 
 function getDiff(ddate){
 	dateNow = new Date();	//grab current date
