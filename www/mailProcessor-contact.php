@@ -15,7 +15,7 @@ $subject = filter_var($_POST["mysubject"], FILTER_SANITIZE_SPECIAL_CHARS);
 if(filter_var($_POST["myemail"], FILTER_VALIDATE_EMAIL) ){
   $email = $_POST["myemail"];
 }else{
-  echo "We appologize, there was a problem with your email address, please contact us directly at teammetalcow@gmail.com";
+  echo "We apologize, there was a problem with your email address, please contact us directly at teammetalcow@gmail.com";
   exit(0);
 }
 

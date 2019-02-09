@@ -14,6 +14,7 @@ RedirectMatch 301 /SummerCamp2017 https://goo.gl/forms/PbkqjHWnyX2Rh2832
 RedirectMatch 301 /slack https://metalcowrobotics.slack.com
 RedirectMatch 301 /calendar https://calendar.google.com/calendar/embed?src=teammetalcow%40gmail.com&ctz=America%2FChicago
 RedirectMatch 301 /store https://shop.spreadshirt.com/metalcowrobotics
+RedirectMatch 301 /comps https://www.thebluealliance.com/team/4213
 
 Redirect 301 /signup.html /emailform
 
