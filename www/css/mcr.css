@@ -12,7 +12,9 @@ h2.mcr_title {
 
 .small_sponsors img{
   margin: 0px 20px 10px 20px;
-  width:100px;
+  width:75px;
+  -webkit-filter: brightness(0%) invert(1);
+  filter: brightness(0%) invert(1); /*Should make them white*/
 }
 
 /*.btn.btn-darkBg:hover{
