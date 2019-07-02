@@ -4,9 +4,9 @@ require '../vendor/autoload.php';
 
 //if required field is not present, prolly didn't use the HTML form.
 if( !isset($_POST['studentEmail']) ) {
-  echo "We apologize, there was an technical error in processing your application please email us using
+  echo "We apologize, there was an technical error in processing your data please email us using
   the form at <a href='/#contact'>www.metalcowrobotics.com#contact</a>
-  or directly at teammetalcow@gmail.com";
+  or directly at info@metalcowrobotics.com";
   exit(0);
 }
 
@@ -42,7 +42,7 @@ date_default_timezone_set('America/Chicago');
 //build the application message from the webform contents
 $message = "MetalCow,<br>
 <br>
-The following application has been submitted via the website.<br>
+The following information has been submitted via the website.<br>
 Please review and follow up with the student.<br>
 
 <h3>Student Contact Info</h3>
@@ -67,7 +67,7 @@ Please review and follow up with the student.<br>
 ".$studentCommitments."<br>
 
 <h3>Student Team Related Info</h3>
-<b>Student is applying for a role on:</b> ".$studentRole."<br>
+<b>Student is interested in a role on:</b> ".$studentRole."<br>
 <b>Student's Skills:</b><br>
 ".$studentSkills."<br>
 <br>
@@ -85,7 +85,7 @@ Please review and follow up with the student.<br>
 $name = "MetalCow Robotics";
 $email = "teammetalcow@gmail.com";
 $from = new SendGrid\Email($name, $email);
-$subject = "MetalCow Application: ".$studentFname." ".$studentLname;
+$subject = "MetalCow Pre-Enrollment: ".$studentFname." ".$studentLname;
 $to = new SendGrid\Email("MetalCow Robotics", getenv('TEAM_EMAIL'));
 $content = new SendGrid\Content("text/html", $message);
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
