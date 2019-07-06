@@ -60,7 +60,7 @@ https://atom.io/
 Open Atom.io and File>Add Project Folder>Choose the MetalCowWebsite folder and click "Open"
 
 Make a branch for your work in GitHub Desktop
-Make the changes you wnated
+Make the changes you wanted
 Submit an pull requests you want.
 
 Do not do work on the `production` branch, this one is the one tied to the live website and only Code Leads can push to that branch.
