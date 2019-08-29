@@ -7,13 +7,13 @@
 // example: raceDate = new Date(2003,03,26,14,15,00) = April 26, 2003 - 2:15:00 pm
 
 
-//KICKOFF: Saturday, January 6, 2018 | 10:00 am - 12:00 pm ET
-//This means Jan 5, 2018 @ 9am CST
-startBuild = new Date(2019,0,5,8,30,0);
+//KICKOFF: Saturday, January 4, 2020 | 10:00 am - 12:00 pm ET
+//This means Jan 4, 2020 @ 9am CST
+startBuild = new Date(2020,0,4,8,30,0);
 
-//STOP BUILD: Tuesday, February 20, 2018 - 11:59pm ET
-//This means Feb 19, 2018 @ 10:59 CST
-stopBuild = new Date(2019,1,19,21,59,0); //Stop Build 2018
+//STOP BUILD: February 20, 2018 - 11:59pm ET
+//This means Feb 19, 2020 @ 10:59 CST
+stopBuild = new Date(2020,1,19,21,59,0); //Stop Build 2018
 
 function getDiff(ddate){
 	dateNow = new Date();	//grab current date
