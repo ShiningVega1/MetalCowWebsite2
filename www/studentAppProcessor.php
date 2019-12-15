@@ -40,7 +40,7 @@ $studentInteresting = filter_var($_POST["studentInteresting"], FILTER_SANITIZE_S
 date_default_timezone_set('America/Chicago');
 
 //build the application message from the webform contents
-$message = "MetalCow,<br>
+$html_message = "MetalCow,<br>
 <br>
 The following information has been submitted via the website.<br>
 Please review and follow up with the student.<br>
@@ -80,14 +80,13 @@ Please review and follow up with the student.<br>
 <br>
 <i>www.MetalCowRobotics.com/join | ".date('m/d/Y h:i:s a', time())."</i>";
 
-
 //make a connection to google to get gmail to send email for us
 $name = "MetalCow Robotics";
 $email = "teammetalcow@gmail.com";
 $from = new SendGrid\Email($name, $email);
 $subject = "MetalCow Pre-Enrollment: ".$studentFname." ".$studentLname;
 $to = new SendGrid\Email("MetalCow Robotics", getenv('TEAM_EMAIL'));
-$content = new SendGrid\Content("text/html", $message);
+$content = new SendGrid\Content("text/html", $html_message);
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 //Send email to teammetalcow@gmail.com with the application
@@ -97,7 +96,91 @@ $response = $sg->client->mail()->send()->post($mail);
 //echo $response->statusCode();
 //echo $response->headers();
 //echo $response->body();
-//echo $message;
+//echo $html_message;
+
+/**************************
+Use CURL to lazily post this to Slack and get mentors talking
+******************/
+//slack needs it as markdown for formatting
+$markdown_message = "
+>*Student Contact Info*
+>Name: ".$studentFname." ".$studentLname."
+>Email: ".$studentEmail."
+>Phone: ".$studentPhone."
+>
+>*Parent Contact Info*
+>Name: ".$parentFname." ".$parentLname."
+>Email: ".$parentEmail."
+>Phone: ".$parentPhone."
+>
+>*Student Academics*
+>School: ".$studentSchool."
+>Grade: ".$studentGrade."
+>How did student find out about MetalCow Robotics: ".$studentReference."
+>
+>*Robotics Experience:*
+>".$studentRobotics."
+>
+>*Other Commitments:*
+>".$studentCommitments."
+>
+>*Student Team Related Info*
+>Student is interested in a role on: ".$studentRole."
+>Student's Skills:
+>".$studentSkills."
+>
+>*Student's Expectations:*
+>".$studentExpectations."
+>
+>*Something the student finds interesting about themself:*
+>".$studentInteresting."
+>
+>_www.MetalCowRobotics.com/join | ".date('m/d/Y h:i:s a', time())."_";
+
+$curl_payload = ""
+  ."{"
+  ."\"blocks\": ["
+  ."  { "
+  ."    \"type\": \"section\","
+  ."    \"text\": {"
+  ."      \"type\": \"mrkdwn\","
+  ."      \"text\": \"A new grade ".$studentGrade." student, *".$studentFname." ".$studentLname."* has applied. "
+  ." \n Who will be taking point on this one? What time and day are people available to meet? "
+  ." \n _:warning: (One of you will need to send the email, I can't do that yet)_\""
+  ."    }"
+  ."  },"
+  ."  {"
+  ."    \"type\": \"section\","
+  ."    \"text\": {"
+  ."      \"type\": \"mrkdwn\","
+  ."      \"text\": \"".$markdown_message."\""
+  ."    }"
+  ."  }"
+  ."]"
+  ."}";
+
+  /**************************
+  Make CURL post to Slack
+  This is super basic... we can build on it
+  later but this is a start and gets base
+  connections going.
+  ******************/
+  $postUrl = getenv('SLACKBOT_POST_KEY');
+  $ch = curl_init($postUrl);
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
+  curl_setopt($ch, CURLOPT_POSTFIELDS, $curl_payload);
+  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
+      'Content-Type: application/json'
+    )
+  );
+
+  $result = curl_exec($ch);
+
+
+
+
+
 
 
 /**************************
