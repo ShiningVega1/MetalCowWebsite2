@@ -40,7 +40,7 @@ $studentInteresting = filter_var($_POST["studentInteresting"], FILTER_SANITIZE_S
 date_default_timezone_set('America/Chicago');
 
 //build the application message from the webform contents
-$html_message = "MetalCow,<br>
+$htmlMessage = "MetalCow,<br>
 <br>
 The following information has been submitted via the website.<br>
 Please review and follow up with the student.<br>
@@ -86,23 +86,23 @@ $email = "teammetalcow@gmail.com";
 $from = new SendGrid\Email($name, $email);
 $subject = "MetalCow Pre-Enrollment: ".$studentFname." ".$studentLname;
 $to = new SendGrid\Email("MetalCow Robotics", getenv('TEAM_EMAIL'));
-$content = new SendGrid\Content("text/html", $html_message);
+$content = new SendGrid\Content("text/html", $htmlMessage);
 $mail = new SendGrid\Mail($from, $subject, $to, $content);
 
 //Send email to teammetalcow@gmail.com with the application
 $apiKey = getenv('SENDGRID_API_KEY');
 $sg = new \SendGrid($apiKey);
 $response = $sg->client->mail()->send()->post($mail);
-//echo $response->statusCode();
-//echo $response->headers();
-//echo $response->body();
-//echo $html_message;
+error_log("EmailResponse Status: ".$response->statusCode(), 0);
+error_log("EmailResponse Headers: ".$response->headers(), 0);
+error_log("EmailResponse Body: ".$response->body(), 0);
+//echo $htmlMessage;
 
 /**************************
 Use CURL to lazily post this to Slack and get mentors talking
 ******************/
 //slack needs it as markdown for formatting
-$markdown_message = "
+$markdownMessage = "
 >*Student Contact Info*
 >Name: ".$studentFname." ".$studentLname."
 >Email: ".$studentEmail."
@@ -153,7 +153,7 @@ $curl_payload = ""
   ."    \"type\": \"section\","
   ."    \"text\": {"
   ."      \"type\": \"mrkdwn\","
-  ."      \"text\": \"".$markdown_message."\""
+  ."      \"text\": \"".$markdownMessage."\""
   ."    }"
   ."  }"
   ."]"
@@ -176,8 +176,6 @@ $curl_payload = ""
   );
 
   $result = curl_exec($ch);
-
-
 
 
 
